@@ -448,9 +448,7 @@ aws s3api put-public-access-block \
 
 This fires a `PutBucketPublicAccessBlock` event that EventBridge will pick up.
 
-> **Note:** If Public Access Block is active at the bucket level, it will not allow adding public statements using bucket policies or bucket ACLs. Please comment out **Check 1: Public Access Block** in the Lambda before testing the below use cases. Ideally, Public Access Block takes care of public exposure, but a defence-in-depth approach is recommended to cover all scenarios.
-
-**Note:** If Public Access Block is enabled at the bucket level, you won’t be able to add public statements through bucket policies or ACLs. For testing the scenarios below, temporarily disable or comment out the **“Check 1: Public Access Block”** logic in the Lambda and redeploy using the console or Terraform. While Block Public Access generally prevents public exposure, a defence-in-depth approach is recommended to ensure coverage across all cases. The Lambda code will look like the following:
+> **Note:** If Public Access Block is enabled at the bucket level, you won’t be able to add public statements through bucket policies or ACLs. For testing the scenarios below, temporarily disable or comment out the **“Check 1: Public Access Block”** logic in the Lambda and redeploy using the console or Terraform. While Block Public Access generally prevents public exposure, a defence-in-depth approach is recommended to ensure coverage across all cases. The Lambda code will look like the following after commenting out lines from 68 to 80:
 
 ```python
     findings = []
