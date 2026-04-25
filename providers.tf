@@ -3,7 +3,7 @@ terraform {
 
   cloud {
 
-    organization = "devsecblueprint-ss"
+    organization = "devsecblueprint"
 
     workspaces {
       name = "aws-s3-public-access-auto-remediation"

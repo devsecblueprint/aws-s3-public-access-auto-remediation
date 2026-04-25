@@ -65,7 +65,7 @@ This variable is set automatically by Terraform during deployment.
 This control operates at the **bucket level only**. It remediates:
 
 - **Block Public Access** — re-enables all four Block Public Access settings
-- **Bucket policy** — deletes the bucket policy if it grants public access
+- **Bucket policy** — deletes the public bucket policy blocks and only retains private access blocks OR deletes bucket policy if only public access block exist
 - **Bucket ACL** — resets the bucket ACL to `private`
 
 It does **not** remediate object-level ACLs. Objects that were individually made public before this control runs will remain public until addressed separately.
@@ -76,12 +76,14 @@ Provider versions are managed by Terraform Cloud and pinned in `.terraform.lock.
 
 ## Terraform Workspace
 
-This project uses Terraform Cloud:
+This project uses Terraform Cloud(Optional):
 
 | Setting      | Value                                  |
 |--------------|----------------------------------------|
 | Organization | `devsecblueprint`                   |
 | Workspace    | `aws-s3-public-access-auto-remediation`|
+
+**Note:** Optional if running locally, comment out `cloud` section from providers.tf for local TF state. 
 
 ## Lambda Packaging
 
